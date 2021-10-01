@@ -35,8 +35,9 @@ def main():
     # cb = get_cb_cloud_object(args)
     cb = CBCloudAPI(profile='default')
 
-    query = cb.select(Device).where('1').set_status(['ACTIVE'])
+    query = cb.select(Device).set_status(['ACTIVE'])
     devices = list(query)
+    print("Device count: {}".format(len(devices)))
     if args.verbose:
         print(f"Querying {len(devices)} device(s)...")
     active_queries = set()

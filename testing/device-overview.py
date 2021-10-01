@@ -17,5 +17,4 @@ if keyword != "":
 	device = device.where(keyword)
 
 for i, dev in enumerate(device):
-
 	print(i, dev.name)
