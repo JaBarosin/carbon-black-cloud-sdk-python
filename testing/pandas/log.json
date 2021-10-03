@@ -1,0 +1,26 @@
+# result[0:1]
+[{
+  'backend_timestamp': '2021-10-02T23:37:22.538Z', 'childproc_count': 0,
+  'crossproc_count': 2, 'device_group_id': 28647, 'device_id': 27029766,
+  'device_name': 'pandora\\win-svr', 'device_policy_id': 191308, 'device_timestamp': '2021-10-02T23:36:45.748Z',
+  'filemod_count': 0, 'ingress_time': 1633217812586, 'modload_count': 1,
+  'netconn_count': 346, 'org_id': 'N33FYZ8N', 'parent_guid': 'N33FYZ8N-019c7106-0000027c-00000000-1d7b7d7f7291d50',
+  'parent_pid': 636, 'process_guid': 'N33FYZ8N-019c7106-000008cc-00000000-1d7b7d81a6047d5',
+  'process_hash': ['8dd15a9da01c57e0c12e95a5b4a8d242', 'ca8c55567793e0cf2d297e19736f5f5f88430cab5e3eb9a2160052d39fc9f88d'],
+  'process_name': 'c:\\windows\\system32\\dns.exe', 'process_pid': [2252],
+  'process_username': ['NT AUTHORITY\\SYSTEM'],
+  'regmod_count': 0, 'scriptload_count': 0},
+{
+  'backend_timestamp': '2021-10-02T23:37:22.538Z', 'childproc_count': 25, 'crossproc_count': 9,
+  'device_group_id': 28647, 'device_id': 27029766, 'device_name': 'pandora\\win-svr',
+  'device_policy_id': 191308, 'device_timestamp': '2021-10-02T23:35:51.545Z',
+  'enriched': True, 'enriched_event_type': ['CREATE_PROCESS', 'NETWORK', 'SYSTEM_API_CALL'],
+  'event_type': ['childproc', 'crossproc', 'netconn'], 'filemod_count': 76,
+  'ingress_time': 1633217812586, 'legacy': True, 'modload_count': 75, 'netconn_count': 10,
+  'org_id': 'N33FYZ8N', 'parent_guid': 'N33FYZ8N-019c7106-0000027c-00000000-1d7b7d7f7291d50',
+  'parent_pid': 636, 'process_guid': 'N33FYZ8N-019c7106-00000514-00000000-1d7b7d802d7d59b',
+  'process_hash': ['36f670d89040709013f6a460176767ec', '438b6ccd84f4dd32d9684ed7d58fd7d1e5a75fe3f3d12ab6c788e6bb0ffad5e7'],
+  'process_name': 'c:\\windows\\system32\\svchost.exe', 'process_pid': [1300],
+  'process_username': ['NT AUTHORITY\\SYSTEM'],
+  'regmod_count': 192, 'scriptload_count': 0}
+]
