@@ -3,7 +3,7 @@
 from cbc_sdk.platform import Device
 from cbc_sdk import CBCloudAPI
 
-cbc_api = CBCloudAPI(credential_file='/etc/carbonblack/credentials.cbc', profile='default')
+cbc_api = CBCloudAPI(profile='default')
 
 get_devs = cbc_api.select(Device).set_target_priorities(["MEDIUM", "HIGH"])
 
