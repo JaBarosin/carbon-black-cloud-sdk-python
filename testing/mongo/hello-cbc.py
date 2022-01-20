@@ -12,7 +12,7 @@ print("{0: >20} {1: >20} {2: >20} {3: >20} {4: >20}".format("Name", "Id", "Senso
 for device in get_devs:
 	try:
 
-       		print("{: >20} {: >20} {: >20} {: >20} {: >20}".format(device.name[0:18], device.id, device.sensor_version, device.status, device.target_priority))
+		print("{: >20} {: >20} {: >20} {: >20} {: >20}".format(device.name[0:18], device.id, device.sensor_version, device.status, device.target_priority))
 
 	except TypeError:
 
