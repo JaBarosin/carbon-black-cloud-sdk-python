@@ -15,6 +15,8 @@
 import sys
 import json
 import time
+import colorama
+from colorama import Fore, Style
 import requests
 from collections import Counter
 from cbc_sdk.helpers import build_cli_parser
@@ -175,7 +177,6 @@ def get_benchmarks(cb_args):
     response = requests.post(headers=headers, url=url, data=body)
     response = response.json()
     lb2 = list(response['results'])
-
     return lb2
 
 
@@ -211,11 +212,19 @@ def list_benchmarks(cb_args):
     print("\n# " + str(response['num_found']) + " Benchmarks for org " + str(cb_args.orgkey) + " #\n")
     for num, bench in enumerate(lb2):
         num += 1
-        print("{0:50}\tEnabled: {1:7} Rules: {2:12} \tID: {3}"
-              .format(bench['name'],
-                      str(bench['enabled']),
-                      get_benchmark_rules_summary(cb_args, bench['id']),
-                      bench['id']))
+        # print("{0:50}\tEnabled: {1:7} Rules: {2:12} \tID: {3}"
+        #       .format(bench['name'],
+        #               str(bench['enabled']),
+        #               get_benchmark_rules_summary(cb_args, bench['id']),
+        #               bench['id']))
+
+        if bench['enabled'] is True:
+            print(f"{bench['name']:50}\tEnabled: {Fore.GREEN}{str(bench['enabled']):7}{Style.RESET_ALL} "
+                  f"Rules: {get_benchmark_rules_summary(cb_args, bench['id']):12} \tID: {bench['id']}")
+
+        elif bench['enabled'] is False:
+            print(f"{bench['name']:50}\tEnabled: {Fore.LIGHTRED_EX}{str(bench['enabled']):7}{Style.RESET_ALL} "
+                  f"Rules: {get_benchmark_rules_summary(cb_args, bench['id']):12} \tID: {bench['id']}")
 
     return lb2
 
@@ -361,7 +370,17 @@ def list_benchmark_status_per_section(cb_args, benchmark_id=None):
                     if r['enabled'] is True:
                         enabled_count += 1
 
-            print("{0:56}\tEnabled: {1} of {2}".format(sect, enabled_count, c[sect]))
+            if enabled_count == 0:
+                print(f"{sect:56}\tEnabled: {Fore.LIGHTRED_EX}{enabled_count} of {c[sect]}{Style.RESET_ALL}")
+
+            elif 0 < enabled_count < int(c[sect]):
+                print(f"{sect:56}\tEnabled: {Fore.YELLOW}{enabled_count} of {c[sect]}{Style.RESET_ALL}")
+
+            elif enabled_count == int(c[sect]):
+                print(f"{sect:56}\tEnabled: {Fore.GREEN}{enabled_count} of {c[sect]}{Style.RESET_ALL}")
+
+            else:
+                print("{0:56}\tEnabled: {1} of {2}".format(sect, enabled_count, c[sect]))
 
     except ValueError as e:
         print('error type', type(e))
@@ -545,6 +564,8 @@ def update_benchmark(cb_args, bench_id, action_option):
 def main():
     print("\n### CBC CIS Benchmark Import ###\n")
     args = parse_args()
+
+    colorama.init()
 
     if args.listbenchmarks == "all":
         list_benchmarks(args)
